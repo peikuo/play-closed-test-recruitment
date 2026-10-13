@@ -1,4 +1,4 @@
 interface:
-  display_name: "Google Play 闭测互测招募"
-  short_description: "招募真实闭测者，核对参加资格，协调一对一回测和真实反馈"
-  default_prompt: "使用 $play-closed-test-recruitment 帮我推进 Google Play 闭测招募，区分邀请、入群、参加测试、安装和实际使用，并保留核实记录。"
+  display_name: "Google Play Closed-Test Recruitment"
+  short_description: "Recruit real testers and verify reciprocal test evidence"
+  default_prompt: "Use $play-closed-test-recruitment to understand my app, recruit closed-test participants, coordinate genuine reciprocal testing and maintain verified records."

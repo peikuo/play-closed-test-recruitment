@@ -1,41 +1,36 @@
-# 用户参与、测试报告和持续记录
+# Human participation, test reports and records
 
-## 审计表
+## Participation audit
 
-记录项目级授权与个别例外，并逐项跟踪：
+Preserve project authorization and individual exceptions. Track:
 
-| 项目 | 责任与证据 | 状态 |
+| Item | Owner and evidence | Status |
 |---|---|---|
-| 项目说明 | AI阅读资料归纳；用户确认产品事实和测试目标 | 待确认/确认时间 |
-| 招募与回测授权 | 用户确定渠道、预算、可发送内容及手机操作范围 | 生效范围与来源 |
-| 定时检查 | 用户选择间隔、时区和模型；平台实际支持 | 已配置/待配置/暂停/结束 |
-| 手机与敏感步骤 | 用户连接解锁；处理验证码、协议、账号或敏感权限 | 等用户/完成依据 |
-| 基本短测 | AI或用户实际执行操作与观察结果 | 未测/部分/完成范围 |
-| 人工持续试用 | 用户自然使用、主观体验与跨日情况 | 用户自述/可核实证据/未确认 |
-| 开发者反馈与改进 | 用户或开发者确认缺陷、修复版本、复测 | 待反馈/待修复/已复测 |
-| 生产申请交接 | AI整理可核实材料；申请提交属另行明确授权的任务，平台决定 | 条件未满/可申请/已交接；后续状态仅按证据记录 |
+| Product brief | AI summarizes; user confirms facts and goals | Pending/confirmation time |
+| Recruitment and reciprocity | User selects channels, budget, messages and phone scope | Scope and authorization source |
+| Monitoring | User chooses interval/timezone/model; host supports it | Configured/pending/paused/ended |
+| Device and sensitive steps | User connects/unlocks, handles verification/agreements/permissions | Waiting/completion evidence |
+| Short trial | AI or user performs observed actions | Untested/partial/tested scope |
+| Sustained human use | User naturally uses app across days | User report/verified evidence/unknown |
+| Feedback and improvements | User/developer confirms defect, fix and retest | Pending feedback/fix/retested |
+| Production handoff | AI assembles facts; submission needs separate explicit authorization; platform decides | Ineligible/ready/handed off; later states need evidence |
 
-不要自动勾选用户参与项；不按定时任务成功次数推断人测试次数。不设官方没有公布的每日使用时长，不承诺某个日期一定通过。提醒用户只针对可执行的下一步，避免每轮重复催促。
+Do not auto-complete human tasks or infer use from successful scheduler runs. Do not invent official daily durations or guarantee approval dates. Remind only concrete actionable next steps, without repeated polling prompts.
 
-## 每次安装后的简短测试报告
+## Brief report after installation
 
-- 应用、版本、检查时间；设备/Android只含必要非敏感规格。
-- 实际操作：安装、启动、一个核心流程分别记载。
-- 预期结果与观察到的结果；问题附最短复现步骤。
-- 未测内容与限制，语言、资格、网络等障碍。
-- 真实且去敏的截图路径；附件发送成功与否、公开消息链接。
-- 用户下一步：具体要试的功能、需要人工判断的体验、后续自然使用或复测。
+Include app/version/time, necessary non-sensitive device/Android specifications, actual install/launch/core-flow actions, expected and observed results, minimal issue reproduction, untested features and language/eligibility/network constraints. Record real sanitized screenshot paths and actual attachment delivery. Tell the user which feature or subjective experience to test next and when a retest is needed.
 
-例如：已安装并进入棋盘，选择颜色后高亮变化；没有完成一局。请用户亲自完成一局并反馈规则是否容易理解。禁止改写成“功能全部正常”或“已连续测试14天”。
+Example: installed and entered the board; choosing a color changed highlighting; no full game completed. Ask the user to finish a game and assess clarity of rules. Do not rewrite this as all functions working or fourteen days of testing.
 
-## 本地状态与事件日志
+## Local state and events
 
-使用一个项目级本地状态入口，主代理和定时任务都读取同一份短基线。另以事件方式记录重要变更，包含时间、操作者（AI/用户/对方/平台）、动作、证据来源、结果、权限依据、隐私检查、下一步。不要存敏感原文；记录去敏摘要和公开链接即可。
+Use one project-local state entrypoint shared by interactive and scheduled work. Log important changes with time, actor (AI/user/counterpart/platform), action, source, outcome, authorization basis, privacy check and next step. Store sanitized summaries and public links, not sensitive originals.
 
-同一联系人保存最后成功核实时间与最近检查尝试时间；失败不覆盖旧事实。阶段状态独立，不用一个done代表整个互测完成。保留更正事件以便解释错误归因；汇总人数标明来源、是否含自己、精确值或下限。联系人按公开作者去重，并记录跨渠道身份匹配置信度。
+Keep last successful verification separate from latest attempt. Failures do not erase facts. Use independent stage states, not one done flag. Retain corrections for mistaken attribution. Counts carry source, owner inclusion, exact/lower-bound interpretation and timestamp. Deduplicate public authors and retain cross-channel identity confidence.
 
-定时配置记录检查间隔、时区、执行模型、允许渠道和动作、只通知何种变化、用户待办、停止条件。低成本模型可以执行只读增量监控，关键判断由具备能力且获授权的主体处理；不能默认外部模型能够读本机登录环境。
+Scheduling records contain interval, timezone, model, allowed channels/actions, meaningful notification conditions, human tasks and stopping criteria. Low-cost models may perform authorized read-only incremental checks; complex judgments belong to an appropriately capable authorized actor. External models do not automatically have local authenticated access.
 
-## 并发与重复动作
+## Concurrency and duplicate actions
 
-主会话与定时执行器共享记录时指定单一写入者，或使用宿主提供的锁/事务。写入前重读最新状态，保存版本或更新时间，冲突时合并已核实事件，不以旧快照覆盖新动作；使用原子替换保存。发送/加入前检查已有动作及待核实发送，失败或超时先查发布结果再决定是否重发。没有并发保护时顺序执行，暂停重叠检查，不额外创建重复任务。
+Use one writer or host locks/transactions. Reread latest state before writes, retain version/update time, merge verified events on conflict and save via atomic replacement. Never overwrite new actions with an old snapshot. Before sending/joining, check completed and uncertain pending actions. After a timeout, verify publication before considering resend. Without concurrency protection, execute sequentially and avoid overlapping checks or duplicate schedules.

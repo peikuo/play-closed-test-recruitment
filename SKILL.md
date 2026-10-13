@@ -1,83 +1,77 @@
 ---
 name: play-closed-test-recruitment
 license: MIT
-description: 推进 Google Play 闭测招募与一对一互测，核实群成员、Play参加资格、真实安装和反馈，维护联系人证据记录。用于寻找或协调闭测者，不替代应用开发、发布配置或审核申请。
+description: Recruit and coordinate Google Play closed-test participants and one-for-one exchanges. Verify group membership, Play eligibility, real installations and feedback, and maintain evidence records. Use for tester recruitment and coordination, not app development, release configuration or review applications.
 ---
 
-# Google Play 闭测互测招募
+# Google Play Closed-Test Recruitment
 
-目标是招募愿意实际使用应用、保持测试资格并提供真实反馈的人。人数门槛不等于审核通过。开始时核对当前 Play 官方要求和该账号 Console 的实际状态；不要把本技能中的案例数字当作永久政策。
+Recruit people who will actually use the app, retain test eligibility and provide honest feedback. Meeting the participant threshold does not guarantee approval. Check current official requirements and the account's Console before interpreting eligibility; historical case numbers are not permanent policy.
 
-## 适用范围与工具
+## Scope and prerequisites
 
-用于 Google Play Android 闭测的真实招募、双方资格协调、有限设备测试、反馈和持续跟踪，主要支持 Google Groups 与 Reddit。其他社区先核对规则和可用工具。不是刷人数、评分交换、自动审核通过服务，也不包含发布配置变更或完整软件质量认证。
+Support genuine Android closed-test recruitment, reciprocal eligibility coordination, limited device testing, feedback and follow-up, primarily through Google Groups and Reddit. Check community rules and available tools before using other channels. Do not inflate participation, exchange ratings, change release settings or promise approval. This is not comprehensive software quality certification.
 
-这是工作流技能，不能自行提供浏览器、手机控制、账号登录或定时执行能力。开始前按 [references/tools-and-compatibility.md](references/tools-and-compatibility.md) 检查环境及网站访问边界；缺少某项工具只降低对应任务范围，明确交给用户的步骤。仅在 GPT 驱动的 Codex 环境做过实际验证，推荐使用该环境。Claude 未实测，供使用者自行实验；普通 GPT 聊天不等于具备执行工具。执行能力取决于宿主工具和授权。
+This workflow does not supply browser access, authentication, phone control or a scheduler. Read [tools and compatibility](references/tools-and-compatibility.md) before execution. Missing tools limit the corresponding work; identify the user's handoff steps. Recommended environment: GPT-powered Codex, where partial practical validation was performed. Claude is untested and experimental. Ordinary GPT chat does not imply access to execution tools.
 
-## 先理解自己的项目
+## Understand the user's project first
 
-先读用户提供的项目资料、已有代码/说明和可用应用画面，理解产品解决什么问题、服务谁、主要功能、当前版本及已知限制；只读取任务相关资料。不能只拿应用名和链接就开始群发。形成简短项目说明：一句话价值、目标用户、2–3个核心测试流程、预期结果、反馈入口、免费范围和资格条件。事实不明标待确认，与用户核对必要缺口；不夸大功能。之后的邀请、截图说明和回测请求都应让别人看懂产品及具体如何帮助测试。
+Read only relevant project materials, code, documentation and available app screens. Understand the problem, audience, main features, version and known limitations before inviting anyone. Prepare a short brief: one-sentence value proposition, audience, two or three core test flows, expected outcomes, feedback destination, free features and eligibility conditions. Mark unknown facts and resolve necessary gaps with the user. Do not exaggerate features or start mass outreach from a name and link alone. Invitations and evidence should explain the product and how a tester can help.
 
-## 开始前
+## Restore context and authorization
 
-从已有记录恢复进度，确认应用名、群/opt-in/商店链接、语言、免费功能、支持地区和设备条件、反馈入口、目标人数及联系授权。缺少影响行动的信息再问用户。不要重复询问已明确授权的例行协调。
+Resume from existing records. Confirm app name, group/opt-in/store URLs, language, free scope, regions, device requirements, feedback destination, target and authorized contact actions. Ask only for missing information that affects action; preserve earlier authorization and individual exceptions such as requiring proof of reciprocal use first.
 
-搜索、草拟和只读检查可以先做；发消息、加入群、参加测试和手机操作分别遵守用户授权。普通招募授权不自动包含付费、评分交换、账户创建、私人云盘访问、权限变更或发布设置修改。用户指定的“先确认对方测试再回测”等例外要保存在记录中。
+Searching, drafting and reading can precede external actions. Sending, joining groups, opting in and operating a phone each require applicable user authorization. Recruitment permission does not automatically authorize payment, rating exchanges, account creation, private cloud access, permission changes or release settings. Use supported browser tools and a real authorized device. Without a phone, coordinate eligibility but do not claim installation.
 
-有登录浏览器就使用其受支持工具；手机安装/截图仅在用户授权且设备可用时执行。没手机可以完成招募和入口核对，不能声称已安装。需要定时监控时按下节让用户选择间隔与模型，不固定套用案例配置。
+## Scheduled checks and cost
 
-## 定时检查与成本
+Let the user choose the interval before creating a schedule; retain an existing explicit interval. Offer options such as hourly, every two hours or daily and explain responsiveness versus cost. Suggest Luna or another lower-cost model supported by the host, including non-GPT alternatives where available. Verify actual model and scheduler support; do not invent prices or external-model availability. Ask for a choice or disclose use of the existing platform default when unspecified. Never silently replace a specified model.
 
-建立定时任务前，让用户设置多久检查一次；已有明确间隔就沿用，不重复问。可给1小时、2小时、每天等简短选项，解释及时性与成本，不替用户自动决定。告知可选 Luna 或当前工具支持的其他低成本模型，不限于 GPT；核对执行环境实际支持的模型与调度能力，不臆测价格或声称本环境支持外部模型。未指定时征求选择或使用平台既有默认并说明，不静默替换用户指定模型。
+Record interval, timezone, model, scope, notification conditions, permissions and stopping conditions. Create or update an authorized existing schedule without duplicates. Read a short local baseline for each incremental check rather than replaying long chats. Escalate complex judgments only as needed and within agreed model/access permissions. Scheduled agents cannot exceed the main task's authority. Stay quiet when nothing meaningful changes; failures are unconfirmed. End according to user instructions and stage-specific stopping conditions. Reaching the recruitment threshold does not automatically end continuous-participation monitoring or establish approval. Notify once if prolonged inability to verify materially threatens the goal, with a concrete recovery step. See [participation audit](references/participation-audit.md).
 
-保存间隔、时区、模型、范围、通知条件、权限与停止条件。按用户授权创建或更新已有任务，避免重复自动化。每轮从本地短记录读取增量，检查相关新回复与身份变化；只有必要的复杂判断才升级处理。升级模型或扩大权限遵守用户约定。无变化安静，失败标未确认；完成、用户停止或任务失去价值时按授权结束。定时代理权限不能超过主任务授权。达到招募门槛不自动结束持续参与跟踪；按照用户选择的缓冲目标和阶段停止条件处理，别把“人数达标”标为“审核完成”。对工具不可用虽不重复打扰，但长期无法核实而影响目标时应通知一次具体障碍和恢复办法。详细审计按 [references/participation-audit.md](references/participation-audit.md)。
+## Privacy
 
-## 隐私数据不得上传
+Online model processing is not offline execution. Files, screenshots and tool outputs passed to a model may be processed by its service; never promise that all data stays on the device. Filter locally where possible and provide only necessary sanitized facts to models or authorized checking agents. Do not send raw member tables, private-chat screenshots, credentials or unrelated project files as bulk context. If necessary material cannot be sanitized, explain the processing scope and let the user handle it or choose a suitable environment.
 
-使用在线模型不等于本地离线处理。输入给模型的文件、截图和工具输出也可能由模型服务处理；不要承诺“全部数据不出本机”。优先让工具在本地过滤、提取必要事实，传给模型及检查子代理的上下文应去敏且最少；原始成员表、私聊截图、凭据和无关项目文件不得作为批量上下文发送。需要查看无法去敏的材料时先说明处理范围，由用户自行处理或选择符合其隐私要求的环境。
+Do not upload private user data to posts, chats, public repositories, release packages or third-party test apps. This includes member emails, private-message text, account identifiers/tokens, notifications, personal files, real location, private cloud content and personal dashboard pages. Keep sensitive identity matching in the controlled environment and out of shared baselines. Use approved public product information, sanitized observations and synthetic sample data externally.
 
-用户隐私数据不得上传到群帖、聊天、公开仓库、分享包或第三方测试应用。包括成员邮箱、私人消息原文、账号标识/令牌、通知、个人文件、真实位置、私人云盘和个人后台页面。身份对照与敏感原始证据尽量只在当前受控环境处理，不写入共享基线。对外只用用户已认可的公开产品资料、去敏事实和人工样例数据。
+Inspect the entire screenshot, including status bars, notifications and background accounts. Recapture or redact private content, then inspect the resulting image before sending. Screenshot authorization does not waive privacy checks. If a workflow requires private content, use samples or hand it to the user. Publish only generic instructions and anonymized cases, never runtime records or raw phone/chat evidence.
 
-发送截图前检查整个画面（含状态栏、通知及后台账号），存在隐私就重新截取干净画面或去敏，核对处理后图片，再发送；不能以“用户允许发截图”替代隐私检查。若目的流程要求上传私人内容，不执行，改用样例或请用户自行决定处理。发布技能时仅打包通用规则与去敏案例，不打包运行记录或手机/私聊原始凭证。
+## Recruitment and coordination
 
-## 招募与协调
+1. Read recent posts in user-selected communities. Prefer suitable language, free basic testing, an explicit reciprocal offer and simple eligibility. Deduplicate by author, not app or thread. A group is an access channel, not proof that an exchange is suitable.
+2. Read the full post and our reply branch. Match author, nesting, recipient and time. A developer's installation reply to someone else is not a response to us. Public comments, chats and group threads are separate channels; report only checked scope.
+3. Respect community rules and rate limits. Do not mass-message, repeatedly chase silent contacts or bypass moderation, bans or verification. Mark refusals and stop future contact. Send a short authorized one-for-one invitation with our app, group and opt-in links, truthful current status and requested confirmation. Ask for complete links or free conditions when missing. Do not trade five-star ratings or invent usage duration.
+4. Match new members to public authors, source posts or explicit responses. Compare necessary member identifiers in memory; store public display names and evidence, not emails. Ask for a display name when uncertain instead of accusing someone of failing to reciprocate.
+5. Join ordinary test groups and check opt-in eligibility within authorization. Check whether browser and phone use the same Google account. Store visibility is not membership proof; email lists may provide eligibility independently of groups.
+6. When eligible and authorized, install a free app, launch it and try a suitable core flow. If authorization covers launch only, stop there. Hand private data, purchases, agreements and sensitive permissions to the user; prefer sample data. Record installation, launch and functional trials separately. Write a brief report covering app/version, device environment, actions, expected/actual results, issues and untested scope. Send authorized sanitized feedback and give concrete next steps for the user's own testing. AI short trials cannot replace sustained natural human use.
+7. Send real screenshots and specific observations. If only launch was tested, say 'installed and launched'. A screenshot is not proof of continuous participation for fourteen days.
+8. Verify the published message and actual attachment delivery before recording completion. Drafts, previews, clicks and timeouts do not prove success. After one evidence-based recovery attempt fails, preserve the pending action and explain the blocker. Do not bypass security or verification.
+9. Maintain evidence of continuous participation, feedback and actual improvements. A buffer above the threshold is a user-selected target. Do not reuse the original start time to claim continuity after a tester leaves and rejoins. Use current Console eligibility for application readiness; approval requires independent evidence.
 
-1. 在用户选择的社区查看近期帖子，优先语言适合、基本测试免费、明确愿意回测、资格简单的开发者。以作者身份去重，不按不同应用或重复帖子重复邀请同一人。群只是准入渠道，回测是否适合要看具体开发者与产品。
-2. 阅读完整帖子和我方回复分支。作者给其他用户的“已安装”不能算我方回应；评论身份、嵌套层级、收件人和时间都应匹配。公开评论、私聊、群帖是不同渠道，报告只覆盖实际检查过的范围。
-3. 遵守社区发帖规则和平台限流；不批量群发、不重复催促无回应者、不绕过删帖/封禁或验证码。对方拒绝或要求停止时标记不再联系，后续检查也跳过。发送简短的一对一邀请：我方应用、两条入口、真实当前状态、需要对方确认的事项。缺少完整链接或免费条件可先询问，不假设已具备资格。不交换五星或虚构使用时长。
-4. 对新成员通过公开作者名、原帖或明确回应匹配其应用；若需要用成员标识搜索，在内存中比较即可，记录公开显示名及匹配证据，不存成员邮箱。身份不确定时先询问显示名，不指责未履约。
-5. 按授权加入普通测试群、查看 opt-in 资格，并核对手机和浏览器是否使用同一 Google 账号。不要把商店可见当作入群证明。群可能并非唯一准入方式，开发者也可能使用邮箱名单。
-6. 获得资格后，对免费应用安装、启动，并试一个适合的核心流程。授权仅允许启动时就止于启动。需要私人数据、购买、协议或敏感权限时交用户处理，优先用样例数据。记录安装、启动、功能试用各自证据。完成后写简短测试报告，列应用/版本、设备环境、操作、预期与实际结果、问题及未测范围。给开发者发送获授权的去敏反馈，并提醒用户亲自做哪些下一步测试；AI短测不能替代用户长期自然使用。
-7. 发真实截图与具体反馈：实际尝试了什么、结果如何、未完成什么。截图先检查通知、邮箱、个人内容等是否会暴露。只测启动就写“已安装并启动”；不要把截图当成14天持续测试证明。
-8. 核对消息发布结果及附件是否真正发送，再更新记录。草稿、预览、点击发送、加载超时均不代表完成。一次有依据的恢复尝试后仍受限，就保存待办并说明具体障碍；不绕过验证或安全限制。
-9. 维护连续参与、反馈和实际改进的证据。超过门槛的缓冲人数可作为用户选择的目标；退出又加入的测试者不能凭原开始时间宣布连续满足。以 Console 的资格显示决定能否申请，审核通过仍需独立确认。
+## Separate evidence states
 
-## 证据状态必须分开
-
-| 状态 | 可用证据 | 不可推断 |
+| State | Evidence | Does not establish |
 |---|---|---|
-| 已邀请 / 已同意 | 已发布邀请 / 对我方直接回应 | 已入群、已使用 |
-| 已入群 | 我方成员页匹配；对方群显示会员设置 | Play参加或下载 |
-| 对方自述参加Play | 对方明确回应 | 独立核实、安装或使用 |
-| 页面/截图核实参加Play | 可对应身份和时间的opt-in页面或截图；截图注明由谁提供 | Console中精确对应个人、实际使用 |
-| Console汇总资格 | 当前Console精确人数或达标勾选 | 逐人名单、实际安装或使用 |
-| 已安装 / 已启动 | 包名、商店已安装、真实设备画面 | 完整功能测试或14天连续参加 |
-| 已功能试用 | 操作与结果、截图、具体反馈 | 审核一定通过 |
+| Invited / agreed | Published invitation / direct reply to us | Membership or use |
+| Group member | Matched member page or member settings | Play opt-in or download |
+| Self-reported Play participation | Explicit counterpart statement | Independent verification or use |
+| Page/screenshot-confirmed opt-in | Identity/time-matched opt-in page; attribute screenshot source | Exact Console identity or use |
+| Console aggregate eligibility | Current exact count or completion indicator | Individual names, installation or use |
+| Installed / launched | Package, installed store state or real device screen | Complete functional testing or continuous participation |
+| Functional trial | Observed actions/results, screenshot and feedback | Guaranteed approval |
 
-注明“对方自述”“用户自述”“设备/页面核实”“未确认”。Console只给达标勾选时报告“至少达到门槛”，不要编造精确人数。旧页面与刷新结果冲突时，以完成加载后的当前权威显示为准，并保留更正说明。
+Label counterpart reports, user reports, device/page verification and unknowns. A threshold checkmark supports a lower bound, not an invented exact count. If refreshed evidence contradicts an older page, use the fully loaded current authoritative result and retain the correction.
 
-## 用户参与审计
+## Human participation and records
 
-按 [references/participation-audit.md](references/participation-audit.md) 维护明确的人类待办：设备连接/解锁、验证/协议/权限、真实体验、持续使用、反馈确认、修复与复测、最终申请。每项记需要谁做、依据、状态及用户确认时间；未经观察或用户确认不能标完成。需要用户操作时说明具体原因和动作，已授权的普通例行事项无需逐次审批。审计既保证人实际参与，也防止代理伪造参与或把短测冒充完整测试。
+Use [participation audit](references/participation-audit.md) to track device connection/unlock, verification/agreements/permissions, real experience, sustained use, feedback confirmation, fixes, retesting and application handoff. Record owner, evidence, status and confirmation time. Do not mark human tasks complete without observation or user confirmation. Explain specific handoffs; already-authorized routine work needs no repeated approval.
 
-## 持续记录与报告
+Use [coordination records](references/coordination.md) for contact states, scope, successful checks and next steps. Failed checks must not replace last successful timestamps. An inaccessible channel cannot be reported as having no replies. Synchronize invitations, responses, joins, installs and deliveries promptly so scheduled and interactive work stay aligned.
 
-按 [references/coordination.md](references/coordination.md) 保存联系人状态、检查范围、成功时间和下一步。失败检查不能覆盖上次成功核实时间；没有访问到的渠道不能报告“无人回复”。新邀请、回应、入群、安装和发送后及时同步，避免主会话与定时检查脱节。
+Notify only meaningful responses, identity/count changes, installation blockers or required user actions. Do not repeatedly report the same tool limitation. If delegation is authorized, a single read-only checking agent can receive a short sanitized baseline; avoid duplicate browsing and leave mutations to the authorized actor. Read [case study](references/case-study.md) for retrospectives; it documents recruitment, not production approval.
 
-无变化的监控保持安静；通知有意义的新回应、身份确认、人数变化、安装障碍或需用户处理的事项。工具不可用时记未确认，不重复打扰相同限制。只读范围较大且委派获授权时可使用简短基线交给单次检查代理；主代理避免重复同样浏览，变更由获授权主体执行。
+## Official reference
 
-使用例句和故障处理时读 [references/coordination.md](references/coordination.md)。复盘或对外介绍方法时读 [references/case-study.md](references/case-study.md)，该案例是招募阶段记录，非已获得生产权限的保证。
-
-## 当前官方依据
-
-[Google Play 新个人账号测试要求](https://support.google.com/googleplay/android-developer/answer/14151465)：运行闭测、招募、反馈、持续参与与生产权限申请。执行任务时重新核对适用范围、数字及 Console；不设定官方未公布的“每天必须使用几分钟”规则。
+[Google Play testing requirements for new personal accounts](https://support.google.com/googleplay/android-developer/answer/14151465). Recheck current applicability, thresholds and Console state during execution. Do not invent an official daily minimum usage duration.
