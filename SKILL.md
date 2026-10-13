@@ -1,5 +1,6 @@
 ---
 name: play-closed-test-recruitment
+license: MIT
 description: 推进 Google Play 闭测招募与一对一互测，核实群成员、Play参加资格、真实安装和反馈，维护联系人证据记录。用于寻找或协调闭测者，不替代应用开发、发布配置或审核申请。
 ---
 

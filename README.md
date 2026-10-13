@@ -17,6 +17,13 @@ An evidence-based agent skill for Google Play closed-test recruitment and one-fo
 
 ## 安装和使用
 
+也可通过 skills CLI 安装（该第三方工具默认有安装遥测，介意时设置 `DISABLE_TELEMETRY=1`）：
+
+```sh
+npx skills add peikuo/play-closed-test-recruitment --skill play-closed-test-recruitment --agent codex
+```
+
+
 将本仓库作为一个完整技能目录安装到 Codex 的 skills 目录。若已有同名安装，请先比较和合并，避免覆盖本地修改。
 
 ```sh
@@ -83,4 +90,8 @@ references/
 
 欢迎通过 Issues 提交问题、去敏的失败场景或改进建议。请包含实际操作、预期结果、实际结果，以及宿主和可用工具；不要附邮箱、账号令牌、私人消息、成员表或未经去敏的截图。
 
-修订后应重新检查授权边界、隐私、证据归因、引用路径和打包内容。开源许可证尚未指定；公开可见不等于已经授予开源许可。
+修订后应重新检查授权边界、隐私、证据归因、引用路径和打包内容。本项目使用 [MIT License](LICENSE)，允许使用、修改与分发，须保留版权及许可证声明。
+
+## 本地维护
+
+开发者可把仓库保存在任意本地目录，再将 `~/.codex/skills/play-closed-test-recruitment` 软链到仓库目录，避免维护两份副本。这只影响本机技能发现，不需要把 GitHub 仓库软链到任何市场。替换已有技能前先比较并备份；软链指向必须仍可访问。用户按上面的 clone 安装也可正常使用，无需软链。
