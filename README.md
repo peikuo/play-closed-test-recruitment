@@ -1,5 +1,7 @@
 # Google Play Closed-Test Recruitment
 
+![Google Play Closed-Test Recruitment](assets/cover.jpg)
+
 An evidence-based agent skill for Android developers recruiting genuine closed-test participants and coordinating one-for-one test exchanges through Google Groups and Reddit.
 
 **Recommended: GPT-powered Codex.** Partial practical validation was performed there. Claude is untested; experiment and configure its tools independently. This workflow does not install tools or guarantee recruitment, continuous participation or approval.
