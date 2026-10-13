@@ -1,0 +1,12 @@
+# Local runtime evidence must never enter the release
+.DS_Store
+.env
+.env.*
+*.pem
+*.key
+state/
+runtime/
+evidence/
+screenshots/
+last-check.json
+*.log
