@@ -12,10 +12,12 @@ An evidence-based agent skill for Android developers recruiting genuine closed-t
 - Find suitable developers and deduplicate contacts by author.
 - Separate invitations, agreements, membership, Play opt-in, installation, launch and functional trials.
 - Use an authorized real Android device for limited testing, clean screenshots and specific feedback.
-- Schedule incremental checks at your chosen interval and model cost.
+- Schedule read-only incremental checks at your chosen interval and model cost; review new contacts before sending.
 - Maintain private local evidence and explicit human tasks for sustained use, fixes and retesting.
 
 ## Installation
+
+Download the current package from the [latest release](https://github.com/peikuo/play-closed-test-recruitment/releases/latest), or use one of the methods below. Versioned releases are fixed snapshots; upgrading requires installing the newer package.
 
 Use the skills CLI (third-party install telemetry is enabled by default; set `DISABLE_TELEMETRY=1` to opt out):
 
@@ -57,7 +59,7 @@ Google Groups; Reddit's AndroidClosedTesting, AndroidAppTesting and TestersCommu
 
 ## Privacy and human participation
 
-The package contains generic instructions and an anonymized case, not contact lists, member emails, private chats, screenshots or dashboard records. Keep runtime records in a selected private local directory outside public repositories/cloud sync. Inspect screenshots before sending and minimize model inputs; online models are not offline execution.
+The package contains generic instructions and an anonymized case, not contact lists, member emails, private chats, screenshots or dashboard records. Keep runtime records in a selected private local directory outside public repositories/cloud sync. Inspect and sanitize screenshots before sending and minimize model inputs; online models are not offline execution. Never consent to private-data uploads or click payment/destructive controls during tests. Across all communities, review new outreach with the user, avoid repeated or unsolicited bulk contact, and stop on moderation restrictions.
 
 Users connect devices, handle verification/agreements/sensitive permissions, and perform sustained natural use and subjective assessment. AI short trials do not replace those tasks. No rating exchanges, fabricated tests, mass outreach, release configuration changes or approval guarantees.
 
@@ -70,6 +72,8 @@ references/
   tools-and-compatibility.md
   coordination.md
   participation-audit.md
+  device-testing.md
+  monitoring.md
   case-study.md
 ```
 

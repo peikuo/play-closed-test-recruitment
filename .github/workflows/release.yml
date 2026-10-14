@@ -1,0 +1,63 @@
+name: Publish skill release
+on:
+  push:
+    tags:
+      - 'v*'
+permissions:
+  contents: write
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build and verify public package
+        env:
+          RELEASE_VERSION: ${{ github.ref_name }}
+        run: |
+          python3 - <<'PY'
+          import hashlib, os, pathlib, subprocess, zipfile
+          version = os.environ['RELEASE_VERSION']
+          root = pathlib.Path('.')
+          paths = ['LICENSE', 'README.md', 'SECURITY.md', 'SKILL.md', 'agents/openai.yaml']
+          paths += sorted(str(p) for p in root.glob('references/*.md'))
+          paths += sorted(str(p) for p in root.glob('assets/*.jpg'))
+          tracked = set(subprocess.check_output(['git', 'ls-files'], text=True).splitlines())
+          assert set(paths) <= tracked
+          name = f'play-closed-test-recruitment-{version}.zip'
+          with zipfile.ZipFile(name, 'w', zipfile.ZIP_DEFLATED) as archive:
+              for path in paths:
+                  archive.write(path, 'play-closed-test-recruitment/' + path)
+          with zipfile.ZipFile(name) as archive:
+              assert archive.testzip() is None
+              assert len(archive.namelist()) == len(paths)
+              for path in paths:
+                  assert archive.read('play-closed-test-recruitment/' + path) == pathlib.Path(path).read_bytes()
+          digest = hashlib.sha256(pathlib.Path(name).read_bytes()).hexdigest()
+          pathlib.Path('SHA256SUMS').write_text(f'{digest}  {name}\n')
+          print(f'Verified {len(paths)} public files; SHA256 {digest}')
+          PY
+      - name: Publish verified assets
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+          RELEASE_VERSION: ${{ github.ref_name }}
+        run: |
+          cat > /tmp/release-notes.md <<'NOTES'
+          Reorganized the skill into a concise entrypoint and focused references for device safety, monitoring, contact records and human participation.
+
+          - Reject private-data uploads and inspect/redact screenshots before delivery.
+          - Never click payment or destructive controls; stop when effects are unclear.
+          - Apply respectful outreach and moderation safeguards across all communities, with human review of new contacts and read-only scheduled checks.
+          - Preserve private records before removing scheduler-owned storage.
+
+          The ZIP contains only public skill instructions, references, metadata, license, documentation and cover assets. It excludes runtime records and private test evidence. Verify its SHA256 using the attached SHA256SUMS file.
+
+          Recommended: GPT-powered Codex. Claude remains untested. This release does not claim an end-to-end host test, sustained fourteen-day participation or production approval.
+          NOTES
+          if gh release view "$RELEASE_VERSION" >/dev/null 2>&1; then
+            gh release edit "$RELEASE_VERSION" --title "$RELEASE_VERSION — Google Play Closed-Test Recruitment" --notes-file /tmp/release-notes.md --latest
+          else
+            gh release create "$RELEASE_VERSION" --verify-tag --title "$RELEASE_VERSION — Google Play Closed-Test Recruitment" --notes-file /tmp/release-notes.md --latest
+          fi
+          gh release upload "$RELEASE_VERSION" "play-closed-test-recruitment-${RELEASE_VERSION}.zip" SHA256SUMS --clobber
+          gh release view "$RELEASE_VERSION" --json url,tagName,assets
