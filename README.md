@@ -14,6 +14,7 @@ An evidence-based agent skill for Android developers recruiting genuine closed-t
 - Use an authorized real Android device for limited testing, clean screenshots and specific feedback.
 - Schedule read-only incremental checks at your chosen interval and model cost; review new contacts before sending.
 - Maintain private local evidence and explicit human tasks for sustained use, fixes and retesting.
+- After every round, organize communication summaries, each side's testing progress, evidence-based totals and next-action owners in private tables.
 
 ## Installation
 
@@ -71,6 +72,7 @@ agents/openai.yaml
 references/
   tools-and-compatibility.md
   coordination.md
+  progress-summary.md
   participation-audit.md
   device-testing.md
   monitoring.md

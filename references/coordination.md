@@ -1,6 +1,6 @@
 # Coordination records and message examples
 
-See [participation audit](participation-audit.md) for human and scheduler tasks.
+See [participation audit](participation-audit.md) for human ownership and safe state updates, and [round summaries](progress-summary.md) for the tables generated after each round.
 
 ## Minimal contact record
 
@@ -16,13 +16,13 @@ Record public author ID, app, source/invitation permalinks, group/opt-in links, 
 
 Missing evidence means unknown, not false. Do not store private-message text, member emails, account tokens or full chat screenshots. Aggregates retain source, timestamp, whether the owner is included and whether the value is a lower bound. Merge cross-channel identities only with evidence.
 
-## Adaptable messages
-
-### Platform moderation and contact audit
+## Platform moderation and contact audit
 
 Before a new contact on any website or community, record the platform/community/thread permission basis, author deduplication result, proposed message and destination, and the user's approval. An author recruiting testers does not automatically invite private messages or unrelated promotion. Draft only a relevant reply that fits the actual post; do not mass-distribute the invitation example below. Monitor existing replies read-only in scheduled runs and return new outreach drafts for human review.
 
 Keep a sanitized moderation state: affected channel, notice time, stated reason, sending paused, whether an expiry is actually verified, and next review step. Do not save private moderation letters or account-specific appeal URLs in shared/public resources. A notice listing possible behaviors does not establish which particular message caused enforcement; separate confirmed restrictions from suspected causes. User anecdotes and self-imposed message caps are not official safe limits. Check the current rules of each platform and community when acting. For Reddit specifically, consult [Reddit Rules](https://redditinc.com/policies/reddit-rules) and [Spam guidance](https://support.reddithelp.com/hc/en-us/articles/360043504051-Spam); these are platform-specific references, not universal rules for other sites. Stop affected-channel recruitment sends on warnings, removals, limits or bans; never replace an account or channel to bypass the restriction. Resuming requires review with the user, confirmed permitted access and compliant conduct, not merely the expected passage of time.
+
+## Adaptable messages
 
 Invitation:
 > Hi [name], would you like a free one-for-one test exchange: [their app] for [our app]? [Truthful current status]. Group: [group]. Test: [opt-in]. Please let me know once you join and opt in. Thanks, [sender].
