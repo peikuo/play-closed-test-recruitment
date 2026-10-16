@@ -2,21 +2,13 @@
 
 ![Google Play Closed-Test Recruitment](assets/cover.jpg)
 
-An evidence-based agent skill for Android developers recruiting genuine closed-test participants and coordinating one-for-one test exchanges through Google Groups and Reddit.
+Recruit genuine Google Play closed-test participants, coordinate one-for-one exchanges, and keep track of who has actually joined, installed and tested.
+
+This agent skill helps Android developers manage scattered Google Groups and Reddit conversations, verify progress and turn real device trials into useful feedback.
 
 **Recommended: GPT-powered Codex.** Partial practical validation was performed there. Claude is untested; experiment and configure its tools independently. This workflow does not install tools or guarantee recruitment, continuous participation or approval.
 
-## What it does
-
-- Understand your app and test goals before outreach.
-- Find suitable developers and deduplicate contacts by author.
-- Separate invitations, agreements, membership, Play opt-in, installation, launch and functional trials.
-- Use an authorized real Android device for limited testing, clean screenshots and specific feedback.
-- Schedule read-only incremental checks at your chosen interval and model cost; review new contacts before sending.
-- Maintain private local evidence and explicit human tasks for sustained use, fixes and retesting.
-- After every round, organize communication summaries, each side's testing progress, evidence-based totals and next-action owners in private tables.
-
-## Installation
+## Install and get started
 
 Download the current package from the [latest release](https://github.com/peikuo/play-closed-test-recruitment/releases/latest), or use one of the methods below. Versioned releases are fixed snapshots; upgrading requires installing the newer package.
 
@@ -32,7 +24,7 @@ Or clone the complete skill directory. Compare and back up an existing installat
 git clone https://github.com/peikuo/play-closed-test-recruitment.git ~/.codex/skills/play-closed-test-recruitment
 ```
 
-Example:
+Then start in Codex:
 
 ```text
 Use $play-closed-test-recruitment to help recruit closed-test participants.
@@ -41,6 +33,36 @@ Let me choose the monitoring interval; record installation and actual use separa
 ```
 
 Ordinary GPT chat may lack skill loading, browser/device control and scheduling. Claude Code users should follow current host installation instructions; no Claude end-to-end verification is claimed.
+
+## What a round produces
+
+**Illustrative output only.** These fictional rows show the format; they are not real contacts, test evidence or recruitment results. Your own records stay in a private local directory.
+
+### Communication this round
+
+| Contact / app | Our action | Their response | Evidence / next step |
+|---|---|---|---|
+| Developer A / Sample Notes | Sent an approved one-for-one invitation | Agreed and provided a test link | Reply verified; check eligibility |
+| Developer B / Sample Puzzle | Sent a sanitized launch screenshot and startup feedback | No new reply found in the checked thread | Delivery verified; wait for a response |
+
+### Reciprocal testing progress
+
+| Contact / app | Our progress on their app | Their progress on our app | Next action / owner |
+|---|---|---|---|
+| Developer A / Sample Notes | Group membership verified; Play opt-in not yet checked | Reports opting in; not independently verified | AI: check our eligibility; retain their claim as reported |
+| Developer B / Sample Puzzle | Installed and launched; screenshot delivered; functional trial pending | Group membership verified; Play opt-in and actual use unknown | User: try a core task and share real observations |
+
+The round also summarizes totals, blockers, evidence freshness and human tasks. Invitations, agreements, group membership, Play opt-in, installation and actual use remain separate. Google Play Console supplies the aggregate opt-in count; group size cannot replace it. See the [complete summary format](references/progress-summary.md).
+
+## What it does
+
+- Understand your app and test goals before outreach.
+- Find suitable developers and deduplicate contacts by author.
+- Separate invitations, agreements, membership, Play opt-in, installation, launch and functional trials.
+- Use an authorized real Android device for limited testing, clean screenshots and specific feedback.
+- Schedule read-only incremental checks at your chosen interval and model cost; review new contacts before sending.
+- Maintain private local evidence and explicit human tasks for sustained use, fixes and retesting.
+- After every round, organize communication summaries, each side's testing progress, evidence-based totals and next-action owners in private tables.
 
 ## Required capabilities
 
