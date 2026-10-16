@@ -43,12 +43,13 @@ jobs:
           RELEASE_VERSION: ${{ github.ref_name }}
         run: |
           cat > /tmp/release-notes.md <<'NOTES'
-          Reorganized the skill into a concise entrypoint and focused references for device safety, monitoring, contact records and human participation.
+          Add structured round summaries and clearer communication discipline.
 
-          - Reject private-data uploads and inspect/redact screenshots before delivery.
-          - Never click payment or destructive controls; stop when effects are unclear.
-          - Apply respectful outreach and moderation safeguards across all communities, with human review of new contacts and read-only scheduled checks.
-          - Preserve private records before removing scheduler-owned storage.
+          - Record each round's contacts, concise message topics, responses, delivery evidence and next actions in a communication table.
+          - Maintain full reciprocal progress for group membership, Play opt-in, installation, launch, functional trials, feedback and screenshots, with evidence and freshness tracked separately.
+          - Summarize totals, blockers and human next steps from the private source-of-truth ledger; keep unchanged scheduled checks quiet.
+          - Minimize unnecessary questions, reuse existing evidence and preserve required authorization and human review gates.
+          - Retain privacy, device safety, destructive-action and community moderation safeguards.
 
           The ZIP contains only public skill instructions, references, metadata, license, documentation and cover assets. It excludes runtime records and private test evidence. Verify its SHA256 using the attached SHA256SUMS file.
 
